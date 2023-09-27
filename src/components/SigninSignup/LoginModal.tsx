@@ -26,8 +26,7 @@ export const Login: React.FC<{
   };
 
   const navigate = useNavigate();
-  const { getUserData, signIn, signUp, signWithGoogle, getUserInfo } =
-    useAuth();
+  const { getUserData, signIn, signUp, getUserInfo } = useAuth();
 
   const registerHandler = async (data: LoginProps) => {
     if (mode === "login") {
