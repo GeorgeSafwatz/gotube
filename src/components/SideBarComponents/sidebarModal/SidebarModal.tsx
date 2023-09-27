@@ -39,7 +39,7 @@ const Overlay: React.FC<ToggleProps> = ({ setToggle }) => {
     hidden: { x: "-100%" },
     shown: { x: "0%" },
   };
-  const { userData: authData } = useAuth();
+  const { userData: authData, logout } = useAuth();
   const [showLogin, setShowLogin] = useState<boolean>(false);
   const controlModal = (options?: ModalControls) => {
     options === "show" ? setShowLogin(true) : setShowLogin(false);
@@ -74,7 +74,15 @@ const Overlay: React.FC<ToggleProps> = ({ setToggle }) => {
         </NavLink>
       </div>
       {authData.uid ? (
-        <p>{`Welcome`}</p>
+        <>
+          <p>{`Welcome`}</p>
+          <p
+            className="cursor-pointer underline text-indigo-600 dark:text-indigo-400 "
+            onClick={() => logout()}
+          >
+            sign out
+          </p>
+        </>
       ) : (
         <>
           <p
