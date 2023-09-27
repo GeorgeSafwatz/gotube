@@ -1,0 +1,14 @@
+export { default as HomeIcon } from "./HomeIcon";
+export { default as ShortsIcon } from "./ShortsIcon";
+export { default as SubscriptionsIcon } from "./SubscriptionsIcon";
+export { default as LibraryIcon } from "./LibraryIcon";
+export { default as NextButton } from "./NextButton";
+export { default as PreviousButton } from "./PreviousButton";
+export { default as PlaylistIcon } from "./PlaylistIcon";
+export { default as ShareIcon } from "./ShareIcon";
+export { default as PlayIcons } from "./PlayIcons";
+export { default as AddIcon } from "./AddIcon";
+export { default as PlaylistElipsis } from "./PlaylistElipsis";
+export { default as LikeIcon } from "./LikeIcon";
+export { default as Bars } from "./Bars";
+export { default as HistoryIcon } from "./HistoryIcon";

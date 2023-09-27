@@ -1,0 +1,7 @@
+.dragging {
+  scroll-behavior: auto;
+  cursor: grab;
+}
+.dragging .tabs {
+  user-select: none;
+}
