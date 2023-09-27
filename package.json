@@ -36,6 +36,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.46.1",
+    "react-player": "^2.13.0",
     "react-router-dom": "^6.11.2",
     "sort-by": "^1.2.0",
     "tailwindcss-animate": "^1.0.6"
