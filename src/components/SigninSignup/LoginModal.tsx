@@ -81,18 +81,18 @@ export const Login: React.FC<{
     }
   );
 
-  const {
-    mutate: googleMutate,
-    error: googleError,
-    isLoading: googleLoading,
-    isPaused: googlePaused,
-    isSuccess: googleSuccess,
-  } = useMutation<User, AuthError>({
-    mutationFn: signWithGoogle,
-    onSuccess: (data: User) => {
-      signingSuccessHandler(data);
-    },
-  });
+  // const {
+  //   mutate: googleMutate,
+  //   error: googleError,
+  //   isLoading: googleLoading,
+  //   isPaused: googlePaused,
+  //   isSuccess: googleSuccess,
+  // } = useMutation<User, AuthError>({
+  //   mutationFn: signWithGoogle,
+  //   onSuccess: (data: User) => {
+  //     signingSuccessHandler(data);
+  //   },
+  // });
 
   const {
     register,
@@ -169,11 +169,7 @@ export const Login: React.FC<{
     ? "Login Successful"
     : isPaused
     ? "Waiting for internet connection"
-    : error && !googleLoading && !googleSuccess
-    ? error.message
-    : googleError
-    ? googleError.message
-    : googleSuccess && "Signed with your google account";
+    : error && error.message;
 
   return (
     <motion.div
@@ -197,14 +193,12 @@ export const Login: React.FC<{
       >
         <h3
           className={`capitalize text-2xl text-center w-full font-semibold ${
-            error && !googleSuccess
-              ? "text-red-400"
-              : (isSuccess || googleSuccess) && "text-green-400"
+            error ? "text-red-400" : isSuccess && "text-green-400"
           }`}
         >
-          {mode === "login" && (!isSuccess || !googleSuccess) && !error
+          {mode === "login" && !isSuccess && !error
             ? "Login"
-            : mode === "signup" && (!isSuccess || !googleSuccess) && !error
+            : mode === "signup" && !isSuccess && !error
             ? "Sign Up"
             : ""}
           {statusMessage}
@@ -228,37 +222,35 @@ export const Login: React.FC<{
             isLoading={isLoading}
           />
         )}
-        <button
+        {/* <button
           type="submit"
           className=" rounded-full bg-slate-900 text-slate-50 dark:bg-slate-50 dark:text-slate-900 w-1/2 px-4 py-2 capitalize font-medium mx-auto disabled:cursor-not-allowed"
           disabled={isLoading || isPaused || googleLoading || googlePaused}
           onClick={() => googleMutate()}
         >
           {googleLoading ? "Loading..." : "sign with google"}
-        </button>
+        </button> */}
         <button
           type="submit"
-          disabled={
-            !isValid || isLoading || googleLoading || isPaused || googlePaused
-          }
+          disabled={!isValid || isLoading || isPaused}
           className="rounded-full bg-indigo-500 text-slate-50  w-1/2 px-4 py-2 capitalize font-medium mx-auto focus:border-2 focus:border-slate-50 disabled:cursor-not-allowed disabled:bg-slate-400 disabled:text-slate-600"
         >
           {mode === "login" && !isSuccess && !isLoading ? "Login" : "Sign Up"}
-          {isLoading && !googleLoading && "Loading..."}
+          {isLoading && "Loading..."}
         </button>
       </form>
       <div className="flex flex-col gap-2 justify-center">
         <button
           onClick={clickHandler}
           className="outline-none text-indigo-500 underline-offset-1 underline capitalize"
-          disabled={isLoading || googleLoading || isPaused || googlePaused}
+          disabled={isLoading || isPaused}
         >
           {mode === "login" ? "Sign Up" : "Login"}
         </button>
         <button
           onClick={controlModal}
           className="outline-none text-slate-400 underline-offset-1 underline capitalize"
-          disabled={isLoading || googleLoading || isPaused || googlePaused}
+          disabled={isLoading || isPaused}
         >
           close
         </button>
